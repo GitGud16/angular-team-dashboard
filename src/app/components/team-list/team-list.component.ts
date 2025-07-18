@@ -1,7 +1,7 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeamMember } from '../../models/team-member.interface';
-import { TeamMemberCardComponent } from '../team-member-card/team-member-card.component';
+import { TeamMemberCardComponent, TeamMemberAction } from '../team-member-card/team-member-card.component';
 
 @Component({
   selector: 'app-team-list',
@@ -41,7 +41,7 @@ import { TeamMemberCardComponent } from '../team-member-card/team-member-card.co
              class="team-member-item"
              role="gridcell"
              [attr.aria-label]="'Team member card for ' + member.name">
-          <app-team-member-card [member]="member"></app-team-member-card>
+          <app-team-member-card [member]="member" (memberAction)="onMemberAction($event)"></app-team-member-card>
         </div>
       </div>
 
@@ -89,8 +89,13 @@ import { TeamMemberCardComponent } from '../team-member-card/team-member-card.co
 export class TeamListComponent {
   @Input({ required: true }) teamMembers: TeamMember[] = [];
   @Input() loading = false;
+  @Output() memberAction = new EventEmitter<TeamMemberAction>();
 
   trackByMemberId(index: number, member: TeamMember): number {
     return member.id;
+  }
+
+  onMemberAction(action: TeamMemberAction): void {
+    this.memberAction.emit(action);
   }
 }

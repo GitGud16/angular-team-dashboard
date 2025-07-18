@@ -112,12 +112,11 @@
       <!-- Team Members Grid -->
       <section id="team-members" aria-labelledby="team-members-heading">
         <h2 id="team-members-heading" class="sr-only">Team Members ({{ state.filteredMembers.length }} results)</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-        <app-team-member-card
-          *ngFor="let member of state.filteredMembers; trackBy: trackByMemberId"
-          [member]="member">
-        </app-team-member-card>
-        </div>
+        <app-team-list 
+          [teamMembers]="state.filteredMembers" 
+          [loading]="false"
+          (memberAction)="onMemberAction($event)">
+        </app-team-list>
       </section>
 
       <!-- Empty State -->

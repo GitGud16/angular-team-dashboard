@@ -1,6 +1,11 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeamMember } from '../../models/team-member.interface';
+
+export interface TeamMemberAction {
+  action: 'view' | 'edit' | 'contact' | 'assignTask' | 'viewPerformance' | 'manageVacation' | 'archive';
+  member: TeamMember;
+}
 
 @Component({
   selector: 'app-team-member-card',
@@ -23,6 +28,9 @@ import { TeamMember } from '../../models/team-member.interface';
 })
 export class TeamMemberCardComponent {
   @Input({ required: true }) member!: TeamMember;
+  @Output() memberAction = new EventEmitter<TeamMemberAction>();
+
+  showDropdown = false;
 
   getInitials(name: string): string {
     return name
@@ -53,5 +61,50 @@ export class TeamMemberCardComponent {
       month: 'short',
       day: 'numeric',
     });
+  }
+
+  // Action button handlers
+  onViewDetails(): void {
+    this.memberAction.emit({ action: 'view', member: this.member });
+  }
+
+  onEdit(): void {
+    this.memberAction.emit({ action: 'edit', member: this.member });
+  }
+
+  onContact(): void {
+    this.memberAction.emit({ action: 'contact', member: this.member });
+  }
+
+  onAssignTask(): void {
+    this.memberAction.emit({ action: 'assignTask', member: this.member });
+    this.showDropdown = false;
+  }
+
+  onViewPerformance(): void {
+    this.memberAction.emit({ action: 'viewPerformance', member: this.member });
+    this.showDropdown = false;
+  }
+
+  onManageVacation(): void {
+    this.memberAction.emit({ action: 'manageVacation', member: this.member });
+    this.showDropdown = false;
+  }
+
+  onArchive(): void {
+    this.memberAction.emit({ action: 'archive', member: this.member });
+    this.showDropdown = false;
+  }
+
+  toggleDropdown(): void {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.relative')) {
+      this.showDropdown = false;
+    }
   }
 }
