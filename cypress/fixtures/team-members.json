@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@company.com",
+    "role": "Senior Developer",
+    "status": "active",
+    "performance_indicator": 85,
+    "start_date": "2023-01-15",
+    "end_date": "2025-12-31",
+    "team_lead": "Sarah Johnson",
+    "vacation_taken": 65
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane.smith@company.com",
+    "role": "Product Manager",
+    "status": "active",
+    "performance_indicator": 92,
+    "start_date": "2022-06-01",
+    "end_date": "",
+    "team_lead": "Michael Chen",
+    "vacation_taken": 42
+  },
+  {
+    "id": 3,
+    "name": "Mike Wilson",
+    "email": "mike.wilson@company.com",
+    "role": "UI/UX Designer",
+    "status": "inactive",
+    "performance_indicator": 78,
+    "start_date": "2023-09-10",
+    "end_date": "2025-03-15",
+    "team_lead": "Sarah Johnson",
+    "vacation_taken": 78
+  },
+  {
+    "id": 4,
+    "name": "Sarah Johnson",
+    "email": "sarah.johnson@company.com",
+    "role": "Team Lead",
+    "status": "active",
+    "performance_indicator": 95,
+    "start_date": "2021-03-01",
+    "end_date": "",
+    "team_lead": "Michael Chen",
+    "vacation_taken": 55
+  }
+]

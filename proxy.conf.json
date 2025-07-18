@@ -1,0 +1,12 @@
+{
+    "/api/*": {
+      "target": "https://accurate-spoonbill-539.convex.site",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }
+  
